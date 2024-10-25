@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "blog/base.html" %}
+{% load cust_filters%}
+
+{% block title_block %}
+    <title>{{title}}</title>
+{% endblock %}
+
+
+{% block body_block %}
+<div class="row">
+    {%for blogs in page_list %}
+    <div class="col cust-colume">
+        <div class="card" style="width: 21rem;">
+            <div class="card-header">
+                <img class="card-img-top" src="{{blogs.image}}" alt="Card image">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" style="margin-bottom: 0px;">{{blogs.title}}</h5>
+                <p class='custom-datetime'>Published on {{blogs.publish}} by {{blogs.author|title}}</p>
+                <p class="card-text">{{blogs.body|truncatewords:30}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'blog_details' blogs.slug %}" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+<div class="row">
+    {% include "blog/pagination.html" with page=page_list %}
+</div>
+{% endblock  %}

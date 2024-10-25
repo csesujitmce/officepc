@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "blog/base.html" %}
+
+{% block title_block %}
+    <title>{{title}}</title>
+{% endblock %}
+
+
+{% block body_block %}
+<div class="row">
+   <h1>{{blog_details.title}}</h1>
+   <p>{{blog_details.publish}}</p>
+   <hr>
+   <p>{{blog_details.body}}</p>
+   <img src="" alt="">
+</div>
+{% endblock  %}
